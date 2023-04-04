@@ -1,0 +1,45 @@
+{% extends "base-layout.html" %}
+{% load static %}
+{% block base_layout %}
+<div class="container w-80 mt-5">
+    <div class="row p-5 g-5 mt-5">
+        <div class="col-lg-6">
+            <a href="{% url 'dashboard' %}" class="add-item-btn">
+                <i class='bx bxs-dashboard add-item-icon'></i>
+                <div class="add-item-text">
+                    <h4 class="add-item-text-header">Tableau de bord</h4>
+                    <p class="add-item-text-caption">Pour mieux gérer vos ressources</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-6">
+            <a href="{% url 'list-users' %}" class="add-item-btn">
+                <i class='bx bxs-user add-item-icon'></i>
+                <div class="add-item-text">
+                    <h4 class="add-item-text-header">Gérer le personnel</h4>
+                    <p class="add-item-text-caption">D'une manière beaucoup plus simple'</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-6">
+            <a href="{% url 'list-documents' %}" class="add-item-btn">
+                <i class='bx bxs-file add-item-icon'></i>
+                <div class="add-item-text">
+                    <h4 class="add-item-text-header">Gérer les documents</h4>
+                    <p class="add-item-text-caption">Organiser les templates de documents</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-6">
+            <a href="{% url 'list-requests' %}" class="add-item-btn">
+                <i class='bx bxs-file-plus add-item-icon'></i>
+                <div class="add-item-text">
+                    <h4 class="add-item-text-header">Voir les démandes</h4>
+                    <p class="add-item-text-caption">Savoir ce que souhaite le personnel</p>
+
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

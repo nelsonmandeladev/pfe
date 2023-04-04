@@ -1,0 +1,88 @@
+{% extends "base-layout.html" %}
+{% load static %}
+{% block base_layout %}
+<div class="container">
+    <div class="bg-white rounded py-3 px-2 mt-5">
+        <div class="section-header py-3 px-1">
+            <div class="section-text-container">
+                <h5 class="section-text-header">
+                    Les démandes
+                </h5>
+            </div>
+            <div class="section-action-container">
+                <div class="items-count">
+                    {{requests.count}}{% if requests.count > 1 %} Démandes{% else %} Démande{% endif %}
+                </div>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#createRequestModal" class="btn-more main">
+                    <span>Ajouter une démande</span>
+                    <i class='bx bx-plus'></i>
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table border-light">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Date de création</th>
+                        <th scope="col">Mise à jour le</th>
+                        <th class="text-end" scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                    <tr>
+                        <td>
+                            <p class="sub-name {{bg_options|random}}">{{request.title|slice:"1"}}</p>
+                        </td>
+                        <td>{{request.title}}</td>
+                        <td>{{request.status}}</td>
+                        <td>{{request.date_created}}</td>
+                        <td>{{request.last_update}}</td>
+                        <td class="text-end">
+                            <a href="{% url 'single-request' request.id %}">
+                                <i class='bx bxs-show table-action-icon main'></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="createRequestModal" tabindex="-1" aria-labelledby="createRequestModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="createRequestModalLabel">Choisir le model du comment pour effectuer
+                        la démande</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row gy-2">
+                        {% for document in documents %}
+                        <div class="col-lg-4">
+                            <a href="{% url 'create-request' document.id %}" class="document-card">
+                                <i class='bx bxs-file-doc document-card-icon'></i>
+                                <div class="document-card-content">
+                                    <h4 class="document-card-title">
+                                        {{document.title}}
+                                    </h4>
+                                    <p class="document-card-caption">
+                                        {{document.title}}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+.login-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    display: block;
+    background-color: #fff;
+    width: 35%;
+    padding: 100px 50px;
+}

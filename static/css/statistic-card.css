@@ -1,0 +1,58 @@
+.statistic-card {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    transition: all 0.5s !important;
+}
+
+.statistic-card .statistic-icon {
+    font-size: 28px;
+    padding: 10px;
+    color: #fff;
+    border-radius: 100%;
+}
+
+.statistic-icon.main {
+    background-color: #026e2b;
+}
+
+.statistic-icon.success {
+    background-color: #1ea552;
+}
+
+.statistic-icon.info {
+    background-color: #1e91a5;
+}
+
+.statistic-icon.warning {
+    background-color: #a5971e;
+}
+
+.statistic-icon.danger {
+    background-color: #a51e1e;
+}
+
+.statistic-card .statistic-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.statistic-text .text-header {
+    font-size: 22px;
+    color: #63728f;
+    margin: 0;
+}
+
+.statistic-text .text-caption {
+    font-size: 16px;
+    color: #171c25;
+    margin: 0;
+    font-weight: 400;
+}

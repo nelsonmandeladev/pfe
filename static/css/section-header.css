@@ -1,0 +1,33 @@
+.section-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-header .section-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.section-text-container .section-text-header {
+    font-size: 18px;
+    color: #445779;
+    font-weight: 400;
+}
+
+
+.section-header .section-action-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-action-container .items-count {
+    font-size: 18px;
+    margin-right: 20px;
+}

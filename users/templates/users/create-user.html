@@ -1,0 +1,136 @@
+{% extends "base-layout.html" %}
+{% load static %}
+{% block base_layout %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="bg-white rounded p-4 mt-3">
+                <h4 class="mb-3">Ajouter un personnel</h4>
+                <form class="needs-validation" novalidate method="POST">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="firstName" class="form-label">Nom</label>
+                            <input name="first_name" type="text" class="form-control" id="firstName" placeholder=""
+                                value="" required>
+                            <div class="invalid-feedback">
+                                Entrez un nom valide.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="lastName" class="form-label">Prénom</label>
+                            <input name="last_name" type="text" class="form-control" id="lastName" placeholder=""
+                                value="" required>
+                            <div class="invalid-feedback">
+                                Entrez un prénom valide.
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input name="email" type="email" class="form-control" id="email"
+                                placeholder="email@exemple.com" required>
+                            <div class="invalid-feedback">
+                                Entrez un email valide car il sera utilisé par ce personnel pour accéder à son espace.
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="phone" class="form-label">Téléphone</label>
+                            <input name="phone" type="tel" class="form-control" id="phone" placeholder="+237673954057"
+                                required>
+                            <div class="invalid-feedback">
+                                Assurez vous de fournir un téléphone valide
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="role" class="form-label">Rôle</label>
+                            <select name="role" class="form-select" id="role" aria-label="Default select example"
+                                required>
+                                <option disabled value="">Choisir le role</option>
+                                <option selected value="Personel">Personel</option>
+                                <option value="DAF">DAF</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="address" class="form-label">Adresse</label>
+                            <input name="address" type="text" class="form-control" id="address"
+                                placeholder="1234 Nvog-ada" required>
+                            <div class="invalid-feedback">
+                                Entrez une adress valide.
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="region" class="form-label">Région</label>
+                            <input name="region" value="Centre" type="text" class="form-control" id="region"
+                                placeholder="Centre" required>
+                            <div class="invalid-feedback">
+                                Entrez une région valide.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="town" class="form-label">Ville</label>
+                            <input name="town" value="Yaoundé" type="text" class="form-control" id="town"
+                                placeholder="Centre" required>
+                            <div class="invalid-feedback">
+                                Entrez une ville valide.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="zip" class="form-label">Code postal</label>
+                            <input name="zip_code" type="text" class="form-control" id="zip" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Code post requis.
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <div class="col-md-12">
+                            <label for="password" class="form-label">Reseigner un mot de passe pour se personnel</label>
+                            <div class="input-group">
+                                <input name="password" type="password" class="form-control" id="password"
+                                    placeholder="Hello@123" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                <span class="input-group-text" onclick="showPassword()" id="basic-addon3"><i
+                                        class='bx bxs-show'></i></span>
+                                <div class="invalid-feedback">
+                                    Entrez un mot de pass valide
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input name="is_active" type="checkbox" class="btn-check" id="is-active"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-info w-100" for="is-active">Garder ce compte
+                                    inactif</label><br>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input name="notify" type="checkbox" class="btn-check" id="notify" autocomplete="off">
+                                <label class="btn btn-outline-info w-100" for="notify">Notifier ce personnel
+                                    par mail</label><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="w-100 btn main btn-lg mt-5" type="submit">Enrégistrer le personnel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showPassword() {
+        const passwordField = document.getElementById('password');
+        if (passwordField.type === "password") {
+            passwordField.type = "text"
+        } else {
+            passwordField.type = "password"
+        }
+    }
+</script>
+{% endblock %}

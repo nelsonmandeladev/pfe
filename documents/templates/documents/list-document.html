@@ -1,0 +1,57 @@
+{% extends "base-layout.html" %}
+{% load static %}
+{% block base_layout %}
+<div class="container">
+    <div class="bg-white rounded py-3 px-2 mt-5">
+        <div class="section-header py-3 px-1">
+            <div class="section-text-container">
+                <h5 class="section-text-header">
+                    Les documents
+                </h5>
+            </div>
+            <div class="section-action-container">
+                <div class="items-count">
+                    {{documents.count}}{% if documents.count > 1 %} Documents{% else %} Document{% endif %}
+                </div>
+                <a href="{% url 'create-document' %}" class="btn-more main">
+                    <span>Ajouter un documents</span>
+                    <i class='bx bx-plus'></i>
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table border-light">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Date de création</th>
+                        <th scope="col">Mise à jour le</th>
+                        <th class="text-end" scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for document in documents %}
+                    <tr>
+                        <td>
+                            <p class="sub-name {{bg_options|random}}">{{document.title|slice:"1"}}</p>
+                        </td>
+                        <td>{{document.title}}</td>
+                        <td>{{document.document_type}}</td>
+                        <td>{{document.date_created}}</td>
+                        <td>{{document.last_update}}</td>
+                        <td class="text-end">
+                            <a href="{% url 'single-document' document.id %}">
+                                <i class='bx bxs-show table-action-icon main'></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

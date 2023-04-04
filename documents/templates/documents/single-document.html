@@ -1,0 +1,39 @@
+{% extends "base-layout.html" %}
+{% load static %}
+{% block base_layout %}
+<div class="container">
+    <div class="bg-white rounded p-4 mt-2">
+        <form class="needs-validation" novalidate method="POST">
+            {% csrf_token %}
+            <div class="row g-3 d-flex align-items-center">
+                <div class="col-md-6">
+                    <input value={{single_document.title}} name="title" type="text" class="form-control" id="title"
+                        placeholder="Titre du document" value="" required>
+                </div>
+
+                <div class="col-md-4">
+                    <select value={{single_document.document_type}} name="document_type" class="form-select" id="role"
+                        aria-label="Default select example" required>
+                        <option disabled value="">Choisir le type</option>
+                        <option selected value="letter">Lettre</option>
+                        <option value="ordonance">Ordonance</option>
+                        <option value="mission">Ordre de mission</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button class="w-100 btn main" type="submit">Modifier</button>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="document-content" class="form-label">Contenu</label>
+                        <textarea name="content" class="form-control" id="document-content" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var documentContent = '{{ single_document.content|escapejs }}';
+</script>
+{% endblock %}

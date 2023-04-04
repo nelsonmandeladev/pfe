@@ -1,0 +1,211 @@
+{% extends "base-layout.html" %}
+{% load static %}
+{% block base_layout %}
+<div class="container mb-5">
+    <div class="row mt-4 gap-3 d-flex justify-content-center">
+        <div class="col-lg-2 statistic-card">
+            <i class='bx bxs-file statistic-icon main'></i>
+            <div class="statistic-text">
+                <h4 class="text-header">
+                    {{documents_count}}
+                </h4>
+                <span class="text-caption">Documents</span>
+            </div>
+        </div>
+        <div class="col-lg-2 statistic-card">
+            <i class='bx bxs-file-plus statistic-icon info'></i>
+            <div class="statistic-text">
+                <h4 class="text-header">
+                    {{requests_count}}
+                </h4>
+                <span class="text-caption">Démandes</span>
+            </div>
+        </div>
+        <div class="col-lg-2 statistic-card">
+            <i class='bx bxs-time statistic-icon bg-warning'></i>
+            <div class="statistic-text">
+                <h4 class="text-header">
+                    {{requests_waiting_count}}
+                </h4>
+                <span class="text-caption">En attentes</span>
+            </div>
+        </div>
+        <div class="col-lg-2 statistic-card">
+            <i class='bx bxs-checkbox-checked statistic-icon success'></i>
+            <div class="statistic-text">
+                <h4 class="text-header">
+                    {{requests_validated_count}}
+                </h4>
+                <span class="text-caption">Validées</span>
+            </div>
+        </div>
+        <div class="col-lg-2 statistic-card">
+            <i class='bx bxs-x-square statistic-icon danger'></i>
+            <div class="statistic-text">
+                <h4 class="text-header">
+                    {{requests_rejected_count}}
+                </h4>
+                <span class="text-caption">Rejettées</span>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white rounded py-3 px-2 mt-5">
+        <div class="section-header py-3 px-1">
+            <div class="section-text-container">
+                <h5 class="section-text-header">
+                    Les démandes
+                </h5>
+            </div>
+            <div class="section-action-container">
+                <a href="#" class="btn-link-add main">
+                    <i class='bx bx-plus'></i>
+                </a>
+                <a href="{% url 'list-requests' %}" class="btn-more main">
+                    <span>Toutes les démandes</span>
+                    <i class='bx bx-chevron-right'></i>
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table border-light">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Date de création</th>
+                        <th scope="col">Mise à jour le</th>
+                        <th class="text-end" scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                    <tr>
+                        <td>
+                            <p class="sub-name {{bg_options|random}}">{{request.title|slice:"1"}}</p>
+                        </td>
+                        <td>{{request.title}}</td>
+                        <td>{{request.status}}</td>
+                        <td>{{request.date_created}}</td>
+                        <td>{{request.last_update}}</td>
+                        <td class="text-end">
+                            <i class='bx bxs-show table-action-icon main'></i>
+                            {% comment %}
+                            <a href="{% url 'single-document' document.id %}">
+
+                            </a>
+                            {% endcomment %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="bg-white rounded py-3 px-2 mt-5">
+        <div class="section-header py-3 px-1">
+            <div class="section-text-container">
+                <h5 class="section-text-header">
+                    Les Documents
+                </h5>
+            </div>
+            <div class="section-action-container">
+                <a href="{% url 'create-document' %}" class="btn-link-add main">
+                    <i class='bx bx-plus'></i>
+                </a>
+                <a href="{% url 'list-documents' %}" class="btn-more main">
+                    <span>Tous documents</span>
+                    <i class='bx bx-chevron-right'></i>
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table border-light">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Date de création</th>
+                        <th scope="col">Mise à jour le</th>
+                        <th class="text-end" scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for document in documents %}
+                    <tr>
+                        <td>
+                            <p class="sub-name {{bg_options|random}}">{{document.title|slice:"1"}}</p>
+                        </td>
+                        <td>{{document.title}}</td>
+                        <td>{{document.document_type}}</td>
+                        <td>{{document.date_created}}</td>
+                        <td>{{document.last_update}}</td>
+                        <td class="text-end">
+                            <a href="{% url 'single-document' document.id %}">
+                                <i class='bx bxs-show table-action-icon main'></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="bg-white rounded py-3 px-2 mt-5">
+        <div class="section-header py-3 px-1">
+            <div class="section-text-container">
+                <h5 class="section-text-header">
+                    Le personel
+                </h5>
+            </div>
+            <div class="section-action-container">
+                <a href="{% url 'create-user' %}" class="btn-link-add main">
+                    <i class='bx bx-plus'></i>
+                </a>
+                <a href="{% url 'list-users' %}" class="btn-more main">
+                    <span>Tout le personnel</span>
+                    <i class='bx bx-chevron-right'></i>
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table border-light">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Etat du compte</th>
+                        <th class="text-end" scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>
+                            <p class="sub-name {{bg_options|random}}">{{user.first_name|slice:"1"}}</p>
+                        </td>
+                        <td>{{user.first_name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <p>{% if user.is_active %} Actif {% else %} Inactif {% endif %}</p>
+                        </td>
+                        <td class="text-end">
+                            <a href="{% url 'single-user' user.id %}">
+                                <i class='bx bxs-show table-action-icon main'></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

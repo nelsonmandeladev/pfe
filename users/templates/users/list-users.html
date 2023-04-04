@@ -1,0 +1,61 @@
+{% extends "base-layout.html" %}
+{% load static %}
+{% block base_layout %}
+<div class="container">
+    <div class="bg-white rounded py-3 px-2 mt-5">
+        <div class="section-header py-3 px-1">
+            <div class="section-text-container">
+                <h5 class="section-text-header">
+                    Le personnel
+                </h5>
+            </div>
+            <div class="section-action-container">
+                <div class="items-count">
+                    {{users.count}}{% if users.count > 1 %} Personnels{% else %} Personnel{% endif %}
+                </div>
+                <a href="{% url 'create-user' %}" class="btn-more main">
+                    <span>Ajouter un personnel</span>
+                    <i class='bx bx-plus'></i>
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table border-light">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Etat du compte</th>
+                        <th class="text-end" scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>
+                            <p class="sub-name {{bg_options|random}}">{{user.first_name|slice:"1"}}</p>
+                        </td>
+                        <td>{{user.first_name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <p>{% if user.is_active %} Actif {% else %} Inactif {% endif %}</p>
+                        </td>
+                        <td class="text-end">
+                            <a href="{% url 'single-user' user.id %}">
+                                <i class='bx bxs-show table-action-icon main'></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

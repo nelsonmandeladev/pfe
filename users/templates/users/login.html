@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="login-page-wrapper">
+    <div class="form-container">
+        <form class="login-form needs-validation" novalidate method="POST">
+            {% csrf_token %}
+            <div class="main mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input name="email" type="email" class="form-control" id="email" aria-describedby="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="password" required>
+            </div>
+            <div class="mb-3 form-check">
+                <input onclick="showPassword()" type="checkbox" class="form-check-input" id="show-password">
+                <label class="form-check-label" for="show-password">Voir le mot de pass</label>
+            </div>
+            <button type="submit" class="w-100 btn main btn-lg">Connecter</button>
+            <div class="mt-4">
+                {% include 'messages.html' %}
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    function showPassword() {
+        const passwordField = document.getElementById('password');
+        if (passwordField.type === "password") {
+            passwordField.type = "text"
+        } else {
+            passwordField.type = "password"
+        }
+    }
+</script>
+{% endblock %}

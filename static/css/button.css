@@ -1,0 +1,94 @@
+.btn-link-add {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 100%;
+    transition: all 0.5s !important;
+}
+
+.btn-link-add.main {
+    color: #026e2b;
+    border: 2px solid #026e2b;
+}
+
+.btn-link-add.main:hover {
+    border: 2px solid #1ea552;
+    background-color: #1ea552;
+    color: #fff;
+}
+
+.btn-more {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    margin: 0;
+    border-radius: 5px;
+    transition: all 0.5s !important;
+}
+
+.btn-more.main {
+    background-color: #026e2b;
+    color: #fff;
+}
+
+.btn-more.main:hover {
+    background-color: #1ea552;
+    color: #fff;
+}
+
+.btn.main {
+    background-color: #026e2b;
+    color: #fff;
+    transition: all 0.5s !important;
+}
+
+.btn.main:hover {
+    background-color: #1ea552;
+    color: #fff
+}
+
+.add-item-btn {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: inset -2px 0 0 rgba(0, 0, 0, .1);
+    padding: 50px 20px;
+    gap: 20px;
+}
+
+.add-item-btn .add-item-icon {
+    font-size: 80px;
+    color: #026e2b;
+}
+
+.add-item-btn .add-item-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.add-item-text .add-item-text-header {
+    font-size: 22px;
+    color: #63728f;
+    margin: 0;
+}
+
+.add-item-text .add-item-text-caption {
+    font-size: 16px;
+    color: #171c25;
+    margin: 0;
+    font-weight: 400;
+}

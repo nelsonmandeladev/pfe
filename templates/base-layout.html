@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="base-louout-wrapper">
+
+    <div class="base-laout-body">
+        <div class="row g-0">
+            <div class="col-2">
+                {% include 'sidebar.html' %}
+            </div>
+            <div class="col-10">
+                {% include 'navbar.html' %}
+                <div class="container-fluid">
+                    {% include "messages.html" %}
+                    {% block base_layout %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

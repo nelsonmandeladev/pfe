@@ -1,0 +1,62 @@
+{% load static %}
+<div class="sidebar-conatiner">
+    <div class="side-brand py-3 sticky-top">
+        <h6 class="px-3">CENACTE</h6>
+    </div>
+    <nav id="sidebarMenu" class="sidebar">
+        <ul class="nav d-flex flex-column justify-content-between h-100">
+            <div class="top-nav">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/tableau-de-bord' %} active{% endif %}"
+                        aria-current="page" href="{% url 'dashboard' %}">
+                        <i class='bx bxs-dashboard nav-link-icon'></i>
+                        <span class="nav-link-text">Tableau de bord</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/accueil' %} active{% endif %}" aria-current="page"
+                        href="{% url 'account-home' %}">
+                        <i class='bx bxs-home nav-link-icon'></i>
+                        <span class="nav-link-text">Accueil</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if '/documents/' in request.path %} active{% endif %}" aria-current="page"
+                        href="{% url 'list-documents' %}">
+                        <i class='bx bxs-file nav-link-icon'></i>
+                        <span class="nav-link-text">Acte</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if '/demandes/' in request.path %} active{% endif %}" aria-current="page"
+                        href="{% url 'list-requests' %}">
+                        <i class='bx bxs-file-plus nav-link-icon'></i>
+                        <span class="nav-link-text">Démande</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if '/personnels' in request.path %} active{% endif %}" aria-current="page"
+                        href="{% url 'list-users' %}">
+                        <i class='bx bxs-user nav-link-icon'></i>
+                        <span class="nav-link-text">Personnels</span>
+                    </a>
+                </li>
+            </div>
+            <div class="buttom-nav">
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Paramétrage</span>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">
+                            <i class='bx bx-cog nav-link-icon'></i>
+                            <span class="nav-link-text">Mon compte</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </ul>
+    </nav>
+</div>

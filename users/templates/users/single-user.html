@@ -1,0 +1,132 @@
+{% extends "base-layout.html" %}
+{% load static %}
+{% block base_layout %}
+<div class="container">
+    <div class="row">
+        <!-- <div class="col-lg-6">
+
+        </div> -->
+        <div class="col-lg-6">
+            <div class="bg-white rounded p-4 mt-3">
+                <h4 class="mb-3">Ajouter un personnel</h4>
+                <form class="needs-validation" novalidate method="POST">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="firstName" class="form-label">Nom</label>
+                            <input value={{user.first_name}} name="first_name" type="text" class="form-control"
+                                id="firstName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Entrez un nom valide.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="lastName" class="form-label">Prénom</label>
+                            <input value={{user.last_name}} name="last_name" type="text" class="form-control"
+                                id="lastName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Entrez un prénom valide.
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input value={{user.email}} name="email" type="email" class="form-control" id="email"
+                                placeholder="email@exemple.com" required>
+                            <div class="invalid-feedback">
+                                Entrez un email valide car il sera utilisé par ce personnel pour accéder à son espace.
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="phone" class="form-label">Téléphone</label>
+                            <input value={{user.phone}} name="phone" type="tel" class="form-control" id="phone"
+                                placeholder="+237673954057" required>
+                            <div class="invalid-feedback">
+                                Assurez vous de fournir un téléphone valide
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="role" class="form-label">Rôle</label>
+                            <select value={{user.role}} name="role" class="form-select" id="role"
+                                aria-label="Default select example" required>
+                                <option disabled value="">Choisir le role</option>
+                                <option value="Personel">Personel</option>
+                                <option value="DAF">DAF</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="address" class="form-label">Adresse</label>
+                            <input value={{user.address}} name="address" type="text" class="form-control" id="address"
+                                placeholder="1234 Nvog-ada" required>
+                            <div class="invalid-feedback">
+                                Entrez une adress valide.
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="region" class="form-label">Région</label>
+                            <input value={{user.region}} name="region" type="text" class="form-control" id="region"
+                                placeholder="Centre" required>
+                            <div class="invalid-feedback">
+                                Entrez une région valide.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="town" class="form-label">Ville</label>
+                            <input name="town" value={{user.town}} type="text" class="form-control" id="town"
+                                placeholder="Centre" required>
+                            <div class="invalid-feedback">
+                                Entrez une ville valide.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="zip" class="form-label">Code postal</label>
+                            <input value={{user.zip_code}} name="zip_code" type="text" class="form-control" id="zip"
+                                placeholder="" required>
+                            <div class="invalid-feedback">
+                                Code post requis.
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <div class="col-md-12">
+                            <label for="password" class="form-label">Reseigner un mot de passe pour se personnel</label>
+                            <div class="input-group">
+                                <input name="password" type="password" class="form-control" id="password"
+                                    placeholder="Hello@123" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                <span class="input-group-text" onclick="showPassword()" id="basic-addon3"><i
+                                        class='bx bxs-show'></i></span>
+                                <div class="invalid-feedback">
+                                    Entrez un mot de pass valide
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input checked={{user.is_active}} name="is_active" type="checkbox" class="btn-check"
+                                    id="is_active" autocomplete="off">
+                                <label class="btn btn-outline-info w-100" for="is_active">Garder ce compte
+                                    inactif</label><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="w-100 btn main btn-lg mt-5" type="submit">Enregistrer la modification</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showPassword() {
+        const passwordField = document.getElementById('password');
+        if (passwordField.type === "password") {
+            passwordField.type = "text"
+        } else {
+            passwordField.type = "password"
+        }
+    }
+</script>
+{% endblock %}
